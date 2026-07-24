@@ -33,4 +33,6 @@ A simple and responsive **Pomodoro Timer** built using **HTML, CSS, and JavaScri
 - Dark/Light mode
 - Progress indicator
 - Session counter
-  
+
+PROJECT LINK
+https://ananyas07.github.io/pomodoro-timer/
