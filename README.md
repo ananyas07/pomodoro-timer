@@ -20,7 +20,6 @@ A simple and responsive **Pomodoro Timer** built using **HTML, CSS, and JavaScri
 🚀 VERSION 1
 - Initial implementation of the Pomodoro Timer.
 - Contains the raw development code and the first working prototype.
-- I found that when i first ran it the pause feature wasnt working 
 
 🚀 VERSION 2
 - Improved and refined version of the project.
