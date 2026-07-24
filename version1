@@ -1,0 +1,128 @@
+//HTML PART
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Pomodoro Timer</h1>
+        <hr>
+        <p class="timer" id="timer">25:00</p>
+
+        <div class="button-wrapper">
+            <button id="start">Start</button>
+            <button id="pause">Pause</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+//CSS PART
+
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-135deg,rgb(39,28,243),#ec2f12);
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    color: white;
+    background: rgba(255,255,255,0.20);
+    border-radius: 2em;
+    padding: 4em 3em;
+}
+.title{
+    font-size: 3em;
+}
+hr{
+    width: 100%;
+    height: 5px;
+    background: white;
+    border: none;
+    border-radius: 1em;
+}
+.timer{
+    font-size: 10em;
+    font-weight: 700;
+}
+button{
+    padding: 0.5em;
+    font-size: 2em;
+    font-weight: 800;
+    color: white;
+    background: rgba(255,255,255,0.20);
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: 0.2s;
+}
+button:hover{
+    transform: translateY(-10px);
+}
+
+#start{
+    background: rgb(86,230,14);
+}
+#pause{
+    background: rgb(246,25,25);
+}
+#reset{
+    background: rgb(24,137,242);
+}
+
+//JAVA PART
+
+const start = document.getElementById("start");
+const pause = document.getElementById("pause");
+const reset = document.getElementById("reset");
+const timer = document.getElementById("timer");
+let timeLeft = 1500;
+let interval;
+function updateTimer() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+
+    timer.innerHTML = minutes.toString().padStart(2,"0") + ":" +
+                      seconds.toString().padStart(2,"0");
+}
+function startTimer() {
+    interval = setInterval(function () {
+        timeLeft--;
+        updateTimer();
+
+        if (timeLeft == 0) {
+            clearInterval(interval);
+            alert("Time's up!");
+            timeLeft = 1500;
+            updateTimer();
+        }
+    }, 1000);
+}
+function stopTimer() {
+    clearInterval(interval);
+    timeLeft = 1500;
+    updateTimer();
+}
+start.addEventListener("click", startTimer);
+pause.addEventListener("click", stopTimer);
+reset.addEventListener("click", resetTimer);
